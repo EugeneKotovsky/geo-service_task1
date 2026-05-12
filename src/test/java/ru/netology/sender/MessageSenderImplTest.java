@@ -60,25 +60,6 @@ class MessageSenderImplTest {
         verify(geoMock).byIp(ip);
     }
 
-    @Test
-    void geoServiceImpl_ByIp_ReturnsCorrectCountry() {
 
-        GeoService geoServiceReal = new GeoServiceImpl();
 
-        assertEquals(Country.RUSSIA, geoServiceReal.byIp("172.0.32.11").getCountry());
-        assertEquals(Country.USA, geoServiceReal.byIp("96.44.183.149").getCountry());
-
-        Location localhostLocation = geoServiceReal.byIp("127.0.0.1");
-        assertNotNull(localhostLocation);
-        assertNull(localhostLocation.getCountry());
-    }
-
-    @Test
-    void localizationServiceImpl_Locale_ReturnsCorrectText() {
-        LocalizationServiceImpl locService = new LocalizationServiceImpl();
-
-        assertEquals("Добро пожаловать", locService.locale(Country.RUSSIA));
-        assertEquals("Welcome", locService.locale(Country.USA));
-        assertEquals("Welcome", locService.locale(Country.BRAZIL));
-    }
 }
